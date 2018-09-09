@@ -8,6 +8,7 @@ build:
 	-@rm -rf $(TAGS_LIST_PATH)
 	$(MAKE) V=4 build.node & \
 	$(MAKE) V=6 build.node & \
+	$(MAKE) V=10 build.node & \
 	$(MAKE) V=8 build.node & \
 	wait
 
@@ -58,7 +59,7 @@ get.node.tags:
 # TAG_POSTFIX: additional tag behind the image tag
 # V: node major version
 build.node.env:
-	$(eval DOCKERTAG=$(DOCKERREPO):$$(shell cat $(BUILD_ARTIFACTS_PATH)${V}/version.docker)${TAG_POSTFIX})
+	$(eval DOCKERTAG=$(DOCKERREPO):$$(shell cat $(BUILD_ARTIFACTS_PATH)${V}/version.node)${TAG_POSTFIX})
 	docker build \
 		--target ${ENV} \
 		--build-arg "TAG=$$(cat $(BUILD_ARTIFACTS_PATH)${V}/version.docker)" \
