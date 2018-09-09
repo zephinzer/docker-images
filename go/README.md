@@ -11,16 +11,15 @@ The following example is also available in [the example directory](./example).
 ### Example Dockerfile
 ```dockerfile
 FROM zephinzer/go:1.11
-ARG USER_ID=1000
-USER ${USER_ID}
-WORKDIR /go/src/app
-COPY . /go/src/app
+ARG PROJECT_NAME=app
+WORKDIR /go/src/${PROJECT_NAME}
+COPY . /go/src/${PROJECT_NAME}
 ```
 
 Build it with:
 
 ```bash
-docker build --build-arg USER_ID=$(id -u $(whoami)) -t app .;
+docker build --build-arg PROJECT_NAME=${PROJECT_NAME} -t app .
 ```
 
 > In example directory: `make build`
@@ -30,13 +29,13 @@ docker build --build-arg USER_ID=$(id -u $(whoami)) -t app .;
 For initialising a dependency management strategy:
 
 ```bash
-docker run -v "$(pwd):/go/src/app" app dep init;
+docker run -v "$(pwd):/go/src/${PROJECT_NAME}" app dep init
 ```
 
 For ensuring all dependencies are installed:
 
 ```bash
-docker run -v "$(pwd):/go/src/app" app dep ensure;
+docker run -v "$(pwd):/go/src/${PROJECT_NAME}" app dep ensure
 ```
 
 > In example directory: `make init` (does both depending on whether `dep init` fails)
@@ -44,7 +43,7 @@ docker run -v "$(pwd):/go/src/app" app dep ensure;
 ### Developing with live-reload
 
 ```bash
-docker run -v "$(pwd):/go/src/app" app realize start --run main.go;
+docker run -v "$(pwd):/go/src/${PROJECT_NAME}" app realize start --run main.go
 ```
 
 > In example directory: `make run`
@@ -52,7 +51,7 @@ docker run -v "$(pwd):/go/src/app" app realize start --run main.go;
 ### Compiling
 
 ```bash
-docker run -v "$(pwd):/go/src/app" app go build -o app
+docker run -v "$(pwd):/go/src/${PROJECT_NAME}" app go build -o app
 ```
 
 > In example directory: `make compile`
