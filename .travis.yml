@@ -11,8 +11,6 @@ before_script:
 after_script:
 - docker logout;
 script:
-# prepare Makefile.properties
-- echo "DOCKERUSER=${DH_NAMESPACE}" > Makefile.properties;
-- echo "DOCKERREGISTRY=${DH_REGISTRY}" >> Makefile.properties;
+- echo "DOCKERUSER=${DH_NAMESPACE}\nDOCKERREGISTRY=${DH_REGISTRY}" > Makefile.properties;
 - make build;
 - make publish;
