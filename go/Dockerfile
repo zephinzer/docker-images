@@ -4,7 +4,9 @@ ARG USER_ID=1000
 # install dependencies for dep/realize
 RUN apk add --no-cache bash git curl
 # install realize
-RUN go get github.com/oxequa/realize
+RUN go get -v github.com/oxequa/realize
+# install goconvey
+RUN go get -v github.com/smartystreets/goconvey
 # install dep
 RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 RUN mkdir -p /.cache \
