@@ -1,0 +1,18 @@
+# required variables (configure your pipeline to store these)
+#   DH_USERNAME: DockerHub username
+#   DH_PASSWORD: DockerHub password
+
+sudo: required
+language: bash
+services:
+- docker
+before_script:
+- docker login -u "${DH_USERNAME}" -p "${DH_PASSWORD}";
+after_script:
+- docker logout;
+script:
+# prepare Makefile.properties
+- echo "DOCKERUSER=${DH_NAMESPACE}" > Makefile.properties;
+- echo "DOCKERREGISTRY=${DH_REGISTRY}" >> Makefile.properties;
+- make build;
+- make publish;
