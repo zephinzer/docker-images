@@ -1,6 +1,8 @@
 # required variables (configure your pipeline to store these)
 #   DH_USERNAME: DockerHub username
 #   DH_PASSWORD: DockerHub password
+#   DH_REGISTRY: Docker Registry URL
+#   DH_NAMESPACE: Image namespace
 
 sudo: required
 language: bash
