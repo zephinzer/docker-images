@@ -47,7 +47,7 @@ docker run -v "$(pwd):/go/src/${PROJECT_NAME}" app dep ensure
 docker run -v "$(pwd):/go/src/${PROJECT_NAME}" app realize start --run main.go
 ```
 
-> In example directory: `make run`
+> In example directory: `make start`
 
 ### Compiling
 

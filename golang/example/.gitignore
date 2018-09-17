@@ -1,5 +1,6 @@
 .realize.yaml
 Gopkg.lock
 Gopkg.toml
-app
+coverage.out
+example
 vendor
