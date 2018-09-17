@@ -32,4 +32,4 @@ compile: build
 
 # cleans up the example project *do not copy to your own project
 clean:
-	@rm -rf vendor .realize.yaml app Gopkg.*
+	@rm -rf vendor .realize.yaml example Gopkg.* coverage.out

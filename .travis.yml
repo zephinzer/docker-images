@@ -13,4 +13,5 @@ after_script:
 script:
 - echo "DOCKERUSER=${DH_NAMESPACE}\nDOCKERREGISTRY=${DH_REGISTRY}" > Makefile.properties;
 - make build;
+- make test;
 - make publish;

@@ -81,12 +81,16 @@ get.go.version.go:
 		| head -n 1 \
 		> $(BUILD_ARTIFACTS_PATH)/version.go
 
-test.example: build
-	cd ./example && $(MAKE) build
-	cd ./example && $(MAKE) init
-	stat ./example/vendor
-	stat ./example/Gopkg.lock
-	stat ./example/Gopkg.toml
-	cd ./example && $(MAKE) compile
-	stat ./example/example
-	cd ./example && $(MAKE) clean
+test: build
+	@cd ./example && $(MAKE) build
+	@stat ./.make.build.tags
+	-@rm -rf .make.build.tags
+	@cd ./example && $(MAKE) init
+	@stat ./example/vendor
+	@stat ./example/Gopkg.lock
+	@stat ./example/Gopkg.toml
+	@cd ./example && $(MAKE) compile
+	@stat ./example/example
+	-@cd ./example && $(MAKE) test
+	@stat ./example/coverage.out
+	@cd ./example && $(MAKE) clean
