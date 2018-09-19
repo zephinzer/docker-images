@@ -1,6 +1,10 @@
 # Go Image
 This is a image with Go installed.
 
+Daily builds are run against these images and automatically sent to the DockerHub repository at:
+
+https://hub.docker.com/r/zephinzer/golang/
+
 ## Additional Tooling
 - [Realize for live-reloads](https://github.com/oxequa/realize)
 - [GoConvey for test watching](https://github.com/smartystreets/goconvey)

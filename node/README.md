@@ -1,5 +1,9 @@
 # Node Image
-This is a development and production image for Node
+This is a development and production image for Node.
+
+Daily builds are run against these images and automatically sent to the DockerHub repository at:
+
+https://hub.docker.com/r/zephinzer/node/
 
 ## Additional Tooling
 - [Nodemon for live-reloading](https://github.com/remy/nodemon)
